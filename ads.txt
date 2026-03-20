@@ -1,0 +1,5 @@
+# ads.txt for diamantgames.com
+# Replace pub-XXXXXXXXXXXXXXXX with your actual Google AdSense/AdMob publisher ID
+# You can find it in your AdMob account under Settings > Account Information
+
+google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

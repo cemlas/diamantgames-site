@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamant Games — Casual Games Studio</title>
+    <meta name="description" content="Diamant Games is a casual mobile game studio crafting polished card, puzzle, word, and board games.">
+    <meta property="og:title" content="Diamant Games — Casual Games Studio">
+    <meta property="og:description" content="Polished casual card, puzzle, word, and board games for mobile.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diamantgames.com">
+    <link rel="canonical" href="https://diamantgames.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f4f0e8;
+            --card-bg: #ffffff;
+            --card-border: rgba(0, 0, 0, 0.06);
+            --card-shadow: 0 2px 16px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+            --card-shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+            --text: #2d2a3e;
+            --text-mid: #5c5775;
+            --text-soft: #8a849e;
+            --accent: #ff6b4a;
+            --green: #34b864;
+            --green-light: #e8f8ee;
+            --purple: #8b6cf6;
+            --purple-light: #f0ecff;
+            --yellow: #f5b731;
+            --yellow-light: #fff7e0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ─── Soft colored blobs ─── */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(circle at 15% 15%, rgba(255, 107, 74, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 85% 20%, rgba(139, 108, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(52, 184, 100, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ─── Nav ─── */
+        nav {
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .logo-diamond {
+            width: 38px;
+            height: 38px;
+        }
+        .logo-diamond svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 2px 4px rgba(245, 183, 49, 0.3));
+        }
+        .logo-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.35rem;
+            letter-spacing: 0.01em;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-mid);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 6px 12px;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+            background: rgba(0,0,0,0.04);
+        }
+
+        /* ─── Hero ─── */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        .hero-deco {
+            position: relative;
+            display: inline-block;
+        }
+        .suit {
+            position: absolute;
+            font-size: 1.6rem;
+            opacity: 0.15;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .suit:nth-child(1) { top: -20px; left: -60px; animation-delay: 0s; color: #e74c3c; }
+        .suit:nth-child(2) { top: 10px; right: -50px; animation-delay: 1.5s; color: #2c3e50; }
+        .suit:nth-child(3) { bottom: -10px; left: -40px; animation-delay: 3s; color: #e74c3c; }
+        .suit:nth-child(4) { bottom: 0; right: -65px; animation-delay: 4.5s; color: #2c3e50; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.4rem, 6vw, 3.6rem);
+            line-height: 1.15;
+            letter-spacing: 0.01em;
+            margin-bottom: 16px;
+            animation: popIn 0.5s ease both;
+        }
+        .hero h1 .fun {
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+        .hero h1 .fun::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--yellow);
+            border-radius: 3px;
+            opacity: 0.5;
+            z-index: -1;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-mid);
+            max-width: 480px;
+            margin: 0 auto;
+            font-weight: 500;
+            animation: popIn 0.5s 0.1s ease both;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: translateY(16px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* ─── Games Section ─── */
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--purple);
+            background: var(--purple-light);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 0.01em;
+            margin-bottom: 32px;
+        }
+
+        .games-section {
+            padding: 20px 0 60px;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 24px 28px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 16px;
+            text-decoration: none;
+            color: inherit;
+            cursor: default;
+        }
+        .game-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-3px);
+        }
+        .game-icon {
+            width: 76px;
+            height: 76px;
+            border-radius: 18px;
+            flex-shrink: 0;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        img.game-icon {
+            display: block;
+        }
+        .game-card-info h3 {
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+        .game-card-info p {
+            color: var(--text-mid);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .game-badge {
+            margin-left: auto;
+            padding: 5px 14px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            flex-shrink: 0;
+            letter-spacing: 0.02em;
+        }
+        .badge-live {
+            background: var(--green-light);
+            color: var(--green);
+        }
+        .badge-soon {
+            background: var(--purple-light);
+            color: var(--purple);
+        }
+
+        .more-games {
+            text-align: center;
+            padding: 20px 0 0;
+        }
+        .more-games span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--yellow-light);
+            color: #c48a10;
+            padding: 6px 16px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        /* ─── About ─── */
+        .about-section {
+            padding: 20px 0 60px;
+        }
+        .about-content {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: var(--card-shadow);
+        }
+        .about-content p {
+            color: var(--text-mid);
+            font-weight: 500;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .about-content p + p {
+            margin-top: 14px;
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            padding: 32px 0;
+            border-top: 2px solid rgba(0,0,0,0.04);
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-copy {
+            font-size: 0.8rem;
+            color: var(--text-soft);
+            font-weight: 600;
+        }
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        .footer-links a {
+            color: var(--text-soft);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text); }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 640px) {
+            .hero { padding: 50px 0 40px; }
+            .game-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+                padding: 20px;
+            }
+            .game-badge { margin-left: 0; }
+            .about-content { padding: 24px; }
+            .footer-inner { flex-direction: column; align-items: flex-start; }
+            .nav-links { gap: 12px; }
+            .nav-links a { padding: 6px 8px; font-size: 0.85rem; }
+            .suit { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Nav -->
+        <nav>
+            <a href="/" class="logo">
+                <div class="logo-diamond">
+                    <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 2L34 15L19 36L4 15L19 2Z" fill="url(#dg)" />
+                        <path d="M19 2L34 15L19 17L4 15L19 2Z" fill="rgba(255,255,255,0.35)"/>
+                        <path d="M19 17L34 15L19 36Z" fill="rgba(0,0,0,0.08)"/>
+                        <defs>
+                            <linearGradient id="dg" x1="19" y1="2" x2="19" y2="36">
+                                <stop offset="0%" stop-color="#ffd54f"/>
+                                <stop offset="50%" stop-color="#f5b731"/>
+                                <stop offset="100%" stop-color="#e8a317"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">Diamant Games</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#games">Games</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero -->
+        <section class="hero">
+            <h1>Casual games,<br><span class="fun">crafted with care</span></h1>
+            <p>We build polished card, puzzle, word, and board games for mobile — one gem at a time.</p>
+        </section>
+
+        <!-- Games -->
+        <section class="games-section" id="games">
+            <div class="section-label">Our Games</div>
+            <h2 class="section-title">Portfolio</h2>
+
+            <div class="game-card">
+                <img src="solitaire_icon.png" alt="Klondike Solitaire" class="game-icon">
+                <div class="game-card-info">
+                    <h3>Klondike Solitaire</h3>
+                    <p>The timeless classic, reimagined with clean design and smooth gameplay.</p>
+                </div>
+                <span class="game-badge badge-live">Coming Soon</span>
+            </div>
+
+            <div class="game-card">
+                <img src="spades_icon.png" alt="Spades" class="game-icon">
+                <div class="game-card-info">
+                    <h3>Spades</h3>
+                    <p>Classic trick-taking card game with smart AI opponents.</p>
+                </div>
+                <span class="game-badge badge-soon">In Development</span>
+            </div>
+
+            <div class="more-games">
+                <span>More games coming soon!</span>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="about-section" id="about">
+            <div class="section-label">About</div>
+            <h2 class="section-title">The Studio</h2>
+            <div class="about-content">
+                <p>Diamant Games is a casual mobile game studio based in Berlin, Germany. We focus on crafting casual mobile games that are simple to pick up, satisfying to play, and beautifully designed.</p>
+                <p>Our growing portfolio spans card games, puzzles, word games, and board games — each built with attention to detail and a love for the classics.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-inner">
+                <span class="footer-copy">&copy; 2026 Diamant Games. All rights reserved.</span>
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="mailto:contact@diamantgames.com">Contact</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
