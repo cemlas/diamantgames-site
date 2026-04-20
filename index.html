@@ -284,6 +284,28 @@
             background: var(--purple-light);
             color: var(--purple);
         }
+        .status-live {
+            background: #1a1a2e;
+            color: #ffffff;
+        }
+        .play-badge {
+            display: inline-block;
+            margin-top: 12px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .play-badge img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+        .play-badge:hover {
+            transform: scale(1.03);
+        }
+        a.game-tile {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
 
         /* ─── About ─── */
         .about-section {
@@ -438,17 +460,20 @@
         </div>
 
         <div class="games-grid">
-            <div class="game-tile">
-                <img src="solitaire_icon.png" alt="Klondike Solitaire" class="game-tile-icon">
-                <h3>Klondike Solitaire</h3>
-                <p>The timeless classic, reimagined with clean design and smooth gameplay.</p>
-                <span class="game-status status-coming">Coming Soon</span>
-            </div>
+            <a href="https://play.google.com/store/apps/details?id=com.diamantgames.solitaire" target="_blank" rel="noopener" class="game-tile">
+                <img src="solitaire_icon.png" alt="Solitaire Classic - Card Game" class="game-tile-icon">
+                <h3>Solitaire Classic</h3>
+                <p>The timeless card game, reimagined with clean design and smooth gameplay.</p>
+                <span class="game-status status-live">Available Now</span>
+                <div class="play-badge">
+                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+                </div>
+            </a>
 
             <div class="game-tile">
-                <img src="spades_icon.png" alt="Spades" class="game-tile-icon">
-                <h3>Spades</h3>
-                <p>Classic trick-taking card game with smart AI opponents.</p>
+                <img src="sudoku_icon.png" alt="Sudoku" class="game-tile-icon">
+                <h3>Sudoku</h3>
+                <p>The classic number puzzle with a clean, modern interface.</p>
                 <span class="game-status status-dev">In Development</span>
             </div>
         </div>
