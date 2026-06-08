@@ -288,15 +288,32 @@
             background: #1a1a2e;
             color: #ffffff;
         }
+        .store-badges {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
         .play-badge {
             display: inline-block;
-            margin-top: 12px;
             transition: transform 0.2s, opacity 0.2s;
+            height: 44px;
         }
         .play-badge img {
-            height: 48px;
+            height: 100%;
             width: auto;
             display: block;
+        }
+        /* Apple badge has tighter built-in padding, scale up slightly to match Google's visual size */
+        .play-badge.apple {
+            height: 44px;
+            padding: 6px 0;
+            box-sizing: border-box;
+        }
+        .play-badge.apple img {
+            height: 100%;
         }
         .play-badge:hover {
             transform: scale(1.03);
@@ -460,25 +477,32 @@
         </div>
 
         <div class="games-grid">
-            <a href="https://play.google.com/store/apps/details?id=com.diamantgames.solitaire" target="_blank" rel="noopener" class="game-tile">
+            <div class="game-tile">
                 <img src="solitaire_icon.png" alt="Solitaire Classic - Card Game" class="game-tile-icon">
                 <h3>Solitaire Classic</h3>
                 <p>The timeless card game, reimagined with clean design and smooth gameplay.</p>
                 <span class="game-status status-live">Available Now</span>
-                <div class="play-badge">
-                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+                <div class="store-badges">
+                    <a href="https://play.google.com/store/apps/details?id=com.diamantgames.solitaire" target="_blank" rel="noopener" class="play-badge">
+                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+                    </a>
+                    <a href="https://apps.apple.com/app/solitaire-classic-card-game/id6771492241" target="_blank" rel="noopener" class="play-badge apple">
+                        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+                    </a>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://play.google.com/store/apps/details?id=com.diamantgames.sudoku" target="_blank" rel="noopener" class="game-tile">
+            <div class="game-tile">
                 <img src="sudoku_icon.png" alt="Sudoku" class="game-tile-icon">
                 <h3>Sudoku</h3>
                 <p>The classic number puzzle with a clean, modern interface.</p>
                 <span class="game-status status-live">Available Now</span>
-                <div class="play-badge">
-                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+                <div class="store-badges">
+                    <a href="https://play.google.com/store/apps/details?id=com.diamantgames.sudoku" target="_blank" rel="noopener" class="play-badge">
+                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+                    </a>
                 </div>
-            </a>
+            </div>
         </div>
     </section>
 
