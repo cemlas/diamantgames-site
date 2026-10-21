@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diamant Games — Casual Games Studio</title>
-    <meta name="description" content="Diamant Games is a casual mobile game studio crafting polished games for mobile.">
-    <meta property="og:title" content="Diamant Games — Casual Games Studio">
-    <meta property="og:description" content="Polished casual games for mobile — one gem at a time.">
+    <title>Diamant Games — Mobile Games, Apps &amp; Product Consulting</title>
+    <meta name="description" content="Diamant Games is a Berlin studio building polished puzzle and word games for mobile, and helping tech and gaming teams build better products.">
+    <meta property="og:title" content="Diamant Games — Mobile Games, Apps &amp; Product Consulting">
+    <meta property="og:description" content="Polished puzzle and word games for mobile, plus product consulting for tech and gaming teams.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://diamantgames.com">
+    <meta property="og:image" content="https://diamantgames.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="627">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://diamantgames.com/og-image.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
@@ -21,14 +26,10 @@
         :root {
             --white: #ffffff;
             --off-white: #f9f9fb;
-            --bg: #ffffff;
             --text: #1a1a2e;
             --text-mid: #4a4a65;
             --text-soft: #8888a0;
-            --accent: #e63946;
-            --accent-dark: #c5303c;
             --gold: #f5b731;
-            --gold-light: #fff8e7;
             --navy: #1a1a2e;
             --green: #27ae60;
             --green-light: #eafaf1;
@@ -39,15 +40,10 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
         body {
             font-family: 'Nunito', sans-serif;
-            background: var(--bg);
+            background: var(--white);
             color: var(--text);
             overflow-x: hidden;
             line-height: 1.6;
@@ -70,6 +66,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 16px;
         }
         .logo {
             display: flex;
@@ -77,10 +74,12 @@
             gap: 10px;
             text-decoration: none;
             color: var(--text);
+            flex-shrink: 0;
         }
         .logo-diamond img {
             height: 36px;
             width: auto;
+            display: block;
             filter: drop-shadow(0 2px 4px rgba(245, 183, 49, 0.3));
         }
         .logo-text {
@@ -88,6 +87,7 @@
             font-weight: 800;
             font-size: 1.3rem;
             letter-spacing: -0.02em;
+            white-space: nowrap;
         }
         .nav-links {
             display: flex;
@@ -105,11 +105,9 @@
             padding: 8px 16px;
             border-radius: 8px;
             transition: all 0.2s;
+            white-space: nowrap;
         }
-        .nav-links a:hover {
-            color: var(--text);
-            background: var(--off-white);
-        }
+        .nav-links a:hover { color: var(--text); background: var(--off-white); }
 
         /* ─── Hero ─── */
         .hero {
@@ -117,33 +115,19 @@
             position: relative;
             overflow: hidden;
         }
-        .hero-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 100px 32px 0;
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-
-        /* Geometric background pattern */
         .hero::before {
             content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            inset: 0;
             background:
                 radial-gradient(circle at 20% 50%, rgba(230,57,70,0.12) 0%, transparent 50%),
                 radial-gradient(circle at 80% 30%, rgba(245,183,49,0.08) 0%, transparent 50%);
             z-index: 0;
         }
-
-        /* Diamond pattern overlay */
         .hero::after {
             content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            inset: 0;
             background-image:
                 linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
                 linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
@@ -152,182 +136,218 @@
             background-size: 40px 40px;
             z-index: 0;
         }
-
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 64px 32px 8px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
         .hero-diamond-icon {
             display: inline-block;
-            margin-bottom: 24px;
+            margin-bottom: 18px;
             animation: heroPopIn 0.6s ease both;
         }
         .hero-diamond-icon img {
-            height: 120px;
+            height: 84px;
             width: auto;
+            display: block;
             filter: drop-shadow(0 4px 16px rgba(245, 183, 49, 0.4));
         }
-
         .hero h1 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
-            font-size: clamp(2.6rem, 7vw, 4.2rem);
+            font-size: clamp(2.4rem, 7vw, 4rem);
             line-height: 1.1;
             letter-spacing: -0.02em;
             color: #ffffff;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             animation: heroPopIn 0.6s 0.1s ease both;
         }
-        .hero h1 .highlight {
-            color: var(--gold);
-        }
+        .hero h1 .highlight { color: var(--gold); }
         .hero-sub {
             font-size: 1.15rem;
-            color: rgba(255,255,255,0.6);
-            max-width: 500px;
-            margin: 0 auto 48px;
+            color: rgba(255,255,255,0.65);
+            max-width: 560px;
+            margin: 0 auto 30px;
             font-weight: 500;
             animation: heroPopIn 0.6s 0.2s ease both;
         }
-
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+            animation: heroPopIn 0.6s 0.3s ease both;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 24px;
+            list-style: none;
+            margin-bottom: 44px;
+            color: rgba(255,255,255,0.55);
+            font-size: 0.88rem;
+            font-weight: 600;
+            animation: heroPopIn 0.6s 0.4s ease both;
+        }
+        .hero-stats li { display: flex; align-items: center; gap: 8px; }
+        .hero-stats li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 2px;
+            background: var(--gold);
+            transform: rotate(45deg);
+        }
+        .hero-stats strong { color: #ffffff; font-weight: 800; }
         @keyframes heroPopIn {
             from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .hero-wedge { position: relative; z-index: 1; }
+        .hero-wedge svg { display: block; width: 100%; height: auto; }
 
-        /* Hero bottom wedge */
-        .hero-wedge {
-            position: relative;
-            z-index: 1;
+        /* ─── Buttons ─── */
+        .btn-primary, .btn-ghost {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.92rem;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            transition: all 0.2s;
         }
-        .hero-wedge svg {
-            display: block;
-            width: 100%;
-            height: auto;
+        .btn-primary { background: var(--gold); color: var(--navy); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,183,49,0.3); }
+        .btn-ghost {
+            color: #ffffff;
+            border: 1.5px solid rgba(255,255,255,0.25);
         }
+        .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-        /* ─── Featured Games ─── */
+        /* ─── Games ─── */
         .games-section {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 80px 32px 60px;
+            padding: 64px 32px 72px;
         }
-        .games-header {
+        .section-head {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 40px;
         }
-        .games-header h2 {
+        .section-head h2 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
             font-size: 2rem;
             letter-spacing: -0.02em;
             margin-bottom: 8px;
         }
-        .games-header p {
-            color: var(--text-mid);
-            font-weight: 500;
-            font-size: 1rem;
-        }
+        .section-head p { color: var(--text-mid); font-weight: 500; font-size: 1rem; }
 
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
         .game-tile {
             background: var(--white);
             border: 1px solid rgba(0,0,0,0.06);
             border-radius: 20px;
-            padding: 28px;
+            padding: 24px;
             box-shadow: var(--card-shadow);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            cursor: default;
+            gap: 22px;
+            text-align: left;
         }
-        .game-tile:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--card-shadow-hover);
-        }
+        .game-tile:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); }
         .game-tile-icon {
-            width: 96px;
-            height: 96px;
-            border-radius: 22px;
+            width: 88px;
+            height: 88px;
+            border-radius: 20px;
             object-fit: cover;
             box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-            margin-bottom: 20px;
+            flex-shrink: 0;
         }
-        .game-tile h3 {
-            font-weight: 800;
-            font-size: 1.1rem;
-            margin-bottom: 6px;
-        }
-        .game-tile p {
-            color: var(--text-mid);
-            font-size: 0.88rem;
-            font-weight: 500;
-            margin-bottom: 16px;
-            line-height: 1.5;
+        .game-tile-icon.on-white { border: 1px solid rgba(0,0,0,0.08); }
+        .game-body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1;
+            min-width: 0;
         }
         .game-status {
             display: inline-block;
-            padding: 5px 14px;
-            border-radius: 8px;
-            font-size: 0.72rem;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.66rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
         }
-        .status-coming {
-            background: var(--green-light);
-            color: var(--green);
+        .status-live { background: var(--green); color: #ffffff; }
+        .status-coming { background: var(--purple-light); color: var(--purple); }
+        .game-body h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.01em;
+            margin-bottom: 6px;
         }
-        .status-dev {
-            background: var(--purple-light);
-            color: var(--purple);
-        }
-        .status-live {
-            background: var(--green);
-            color: #ffffff;
+        .game-body p {
+            color: var(--text-mid);
+            font-size: 0.9rem;
+            font-weight: 500;
+            line-height: 1.55;
+            margin-bottom: 16px;
         }
         .store-badges {
+            margin-top: auto;
             display: flex;
             gap: 10px;
-            margin-top: 12px;
             flex-wrap: wrap;
-            justify-content: center;
             align-items: center;
         }
         .play-badge {
             display: inline-block;
-            transition: transform 0.2s, opacity 0.2s;
             height: 44px;
+            transition: transform 0.2s;
         }
-        .play-badge img {
-            height: 100%;
-            width: auto;
-            display: block;
-        }
-        /* Apple badge has tighter built-in padding, scale up slightly to match Google's visual size */
-        .play-badge.apple {
-            height: 44px;
-            padding: 6px 0;
-            box-sizing: border-box;
-        }
-        .play-badge.apple img {
-            height: 100%;
-        }
-        .play-badge:hover {
-            transform: scale(1.03);
-        }
-        a.game-tile {
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-        }
+        .play-badge img { height: 100%; width: auto; display: block; }
+        .play-badge.apple { padding: 6px 0; }
+        .play-badge:hover { transform: scale(1.03); }
 
-        /* ─── About ─── */
-        .about-section {
+        .coming-soon {
+            margin-top: 48px;
+        }
+        .coming-soon > h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-soft);
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .coming-soon .game-tile {
+            max-width: calc(50% - 10px);
+            margin: 0 auto;
+            border: 1.5px dashed rgba(124,92,252,0.3);
+            box-shadow: none;
             background: var(--off-white);
         }
+        .coming-soon .game-tile:hover { transform: none; box-shadow: none; }
+
+        /* ─── About ─── */
+        .about-section { background: var(--off-white); }
         .about-inner {
             max-width: 1100px;
             margin: 0 auto;
@@ -348,7 +368,7 @@
             box-shadow: 0 8px 32px rgba(26,26,46,0.2);
         }
         .about-accent img {
-            width: 60px;
+            width: 64px;
             height: auto;
             filter: drop-shadow(0 2px 8px rgba(245,183,49,0.4));
         }
@@ -365,9 +385,9 @@
             font-size: 1rem;
             line-height: 1.8;
         }
-        .about-text p + p {
-            margin-top: 12px;
-        }
+        .about-text p + p { margin-top: 12px; }
+        .about-text a { color: var(--purple); font-weight: 700; text-decoration: none; }
+        .about-text a:hover { text-decoration: underline; }
 
         /* ─── Consulting ─── */
         .consulting-section {
@@ -378,8 +398,7 @@
         .consulting-section::before {
             content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            inset: 0;
             background:
                 radial-gradient(circle at 80% 20%, rgba(245,183,49,0.10) 0%, transparent 50%),
                 radial-gradient(circle at 15% 80%, rgba(124,92,252,0.08) 0%, transparent 50%);
@@ -423,7 +442,7 @@
         }
         .consulting-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             margin-bottom: 48px;
         }
@@ -439,10 +458,24 @@
             border-color: rgba(245,183,49,0.3);
             transform: translateY(-4px);
         }
-        .consulting-card .c-icon {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            display: block;
+        .svc-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(245,183,49,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .svc-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
         .consulting-card h3 {
             font-family: 'Montserrat', sans-serif;
@@ -452,44 +485,16 @@
             margin-bottom: 8px;
         }
         .consulting-card p {
-            color: rgba(255,255,255,0.55);
+            color: rgba(255,255,255,0.6);
             font-size: 0.9rem;
             font-weight: 500;
             line-height: 1.6;
         }
         .consulting-cta {
-            text-align: center;
-        }
-        .btn-primary {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--navy);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 0.92rem;
-            text-decoration: none;
-            padding: 14px 30px;
-            border-radius: 12px;
-            transition: all 0.2s;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(245,183,49,0.3);
-        }
-        .btn-secondary {
-            display: inline-block;
-            color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.92rem;
-            text-decoration: none;
-            padding: 14px 24px;
-            border-radius: 12px;
-            margin-left: 8px;
-            transition: all 0.2s;
-        }
-        .btn-secondary:hover {
-            color: var(--gold);
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* ─── Footer ─── */
@@ -497,28 +502,6 @@
             background: var(--navy);
             color: rgba(255,255,255,0.5);
             border-top: 1px solid rgba(255,255,255,0.06);
-        }
-        .footer-social {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 9px;
-            background: rgba(255,255,255,0.06);
-            transition: all 0.2s;
-        }
-        .footer-social:hover {
-            background: var(--gold);
-        }
-        .footer-social svg {
-            width: 17px;
-            height: 17px;
-            fill: rgba(255,255,255,0.7);
-            transition: fill 0.2s;
-        }
-        .footer-social:hover svg {
-            fill: var(--navy);
         }
         .footer-inner {
             max-width: 1100px;
@@ -530,15 +513,13 @@
             flex-wrap: wrap;
             gap: 16px;
         }
-        .footer-copy {
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
+        .footer-copy { font-size: 0.8rem; font-weight: 600; }
         .footer-links {
             display: flex;
             gap: 24px;
             list-style: none;
             align-items: center;
+            flex-wrap: wrap;
         }
         .footer-links a {
             color: rgba(255,255,255,0.5);
@@ -547,38 +528,55 @@
             font-weight: 600;
             transition: color 0.2s;
         }
-        .footer-links a:hover {
-            color: rgba(255,255,255,0.85);
+        .footer-links a:hover { color: rgba(255,255,255,0.85); }
+        .footer-social {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: rgba(255,255,255,0.06);
+            transition: all 0.2s;
         }
+        .footer-social:hover { background: var(--gold); }
+        .footer-social svg { width: 17px; height: 17px; fill: rgba(255,255,255,0.7); transition: fill 0.2s; }
+        .footer-social:hover svg { fill: var(--navy); }
 
         /* ─── Responsive ─── */
+        @media (max-width: 900px) {
+            .consulting-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
-            .hero-inner { padding: 60px 24px 0; }
-            .games-section { padding: 60px 24px 40px; }
+            .games-grid { grid-template-columns: 1fr; }
+            .coming-soon .game-tile { max-width: none; }
+            .games-section { padding: 48px 20px 56px; }
             .about-inner {
                 flex-direction: column;
-                padding: 60px 24px;
+                padding: 56px 20px;
                 text-align: center;
-                gap: 32px;
+                gap: 28px;
             }
-            .about-accent {
-                width: 90px;
-                height: 90px;
-                border-radius: 22px;
-            }
-            .about-accent img { width: 44px; height: auto; }
-            .footer-inner {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 32px 24px;
-            }
-            .nav-inner { padding: 14px 20px; }
-            .nav-links a { padding: 6px 10px; font-size: 0.82rem; }
+            .about-accent { width: 90px; height: 90px; border-radius: 22px; }
+            .about-accent img { width: 46px; }
+            .consulting-inner { padding: 64px 20px; }
+            .footer-inner { flex-direction: column; align-items: flex-start; padding: 32px 20px; }
         }
-
-        @media (max-width: 480px) {
-            .games-grid { grid-template-columns: 1fr; }
+        @media (max-width: 600px) {
+            .nav-inner {
+                flex-direction: column;
+                gap: 6px;
+                padding: 12px 16px 8px;
+            }
             .nav-links { gap: 2px; }
+            .nav-links a { padding: 6px 12px; font-size: 0.76rem; }
+            .hero-inner { padding: 44px 20px 8px; }
+            .hero-diamond-icon img { height: 64px; }
+            .hero-sub { font-size: 1.02rem; }
+            .hero-stats { margin-bottom: 36px; }
+            .game-tile { padding: 20px; gap: 16px; }
+            .game-tile-icon { width: 72px; height: 72px; border-radius: 16px; }
+            .consulting-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -587,16 +585,13 @@
     <div class="nav-bar">
         <div class="nav-inner">
             <a href="/" class="logo">
-                <div class="logo-diamond">
-                    <img src="diamond_icon.png" alt="Diamant Games">
-                </div>
+                <div class="logo-diamond"><img src="diamond_icon.png" alt="Diamant Games"></div>
                 <span class="logo-text">Diamant Games</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#games">Games</a></li>
                 <li><a href="#consulting">Consulting</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="privacy-policy.html">Privacy</a></li>
             </ul>
         </div>
     </div>
@@ -604,11 +599,18 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-inner">
-            <div class="hero-diamond-icon">
-                <img src="diamond_icon.png" alt="Diamant Games">
-            </div>
+            <div class="hero-diamond-icon"><img src="diamond_icon.png" alt=""></div>
             <h1>Play games<br><span class="highlight">worth your time</span></h1>
-            <p class="hero-sub">Diamant Games crafts polished casual games for mobile — simple to pick up, satisfying to play, beautifully designed.</p>
+            <p class="hero-sub">Diamant Games is a Berlin studio building polished mobile games and apps, and helping other teams build theirs.</p>
+            <div class="hero-actions">
+                <a href="#games" class="btn-primary">See our games</a>
+                <a href="consulting.html" class="btn-ghost">Work with us</a>
+            </div>
+            <ul class="hero-stats">
+                <li><span><strong>4</strong> live titles</span></li>
+                <li>Google Play &amp; App Store</li>
+                <li>Made in Berlin</li>
+            </ul>
         </div>
         <div class="hero-wedge">
             <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -619,74 +621,87 @@
 
     <!-- Games -->
     <section class="games-section" id="games">
-        <div class="games-header">
-            <h2>Featured Games</h2>
-            <p>Our growing portfolio of casual mobile games.</p>
+        <div class="section-head">
+            <h2>Our Games</h2>
+            <p>Puzzle and word games that are easy to pick up and hard to put down.</p>
         </div>
 
         <div class="games-grid">
             <div class="game-tile">
-                <img src="solitaire_icon.png" alt="Solitaire Classic - Card Game" class="game-tile-icon">
-                <h3>Solitaire Classic</h3>
-                <p>The timeless card game, reimagined with clean design and smooth gameplay.</p>
-                <span class="game-status status-live">Available Now</span>
-                <div class="store-badges">
-                    <a href="https://play.google.com/store/apps/details?id=com.diamantgames.solitaire" target="_blank" rel="noopener" class="play-badge">
-                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
-                    </a>
-                    <a href="https://apps.apple.com/app/solitaire-classic-card-game/id6771492241" target="_blank" rel="noopener" class="play-badge apple">
-                        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
-                    </a>
+                <img src="solitaire_classic_icon.png" alt="Solitaire Classic" class="game-tile-icon">
+                <div class="game-body">
+                    <span class="game-status status-live">Available now</span>
+                    <h3>Solitaire Classic</h3>
+                    <p>The timeless classic, reimagined with clean design and smooth gameplay.</p>
+                    <div class="store-badges">
+                        <a href="https://play.google.com/store/apps/details?id=com.diamantgames.solitaire" target="_blank" rel="noopener" class="play-badge">
+                            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+                        </a>
+                        <a href="https://apps.apple.com/app/solitaire-classic-card-game/id6771492241" target="_blank" rel="noopener" class="play-badge apple">
+                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="game-tile">
                 <img src="sudoku_icon.png" alt="Sudoku" class="game-tile-icon">
-                <h3>Sudoku</h3>
-                <p>The classic number puzzle with a clean, modern interface.</p>
-                <span class="game-status status-live">Available Now</span>
-                <div class="store-badges">
-                    <a href="https://play.google.com/store/apps/details?id=com.diamantgames.sudoku" target="_blank" rel="noopener" class="play-badge">
-                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
-                    </a>
-                    <a href="https://apps.apple.com/app/sudoku-classic-number-puzzle/id6777778748" target="_blank" rel="noopener" class="play-badge apple">
-                        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
-                    </a>
+                <div class="game-body">
+                    <span class="game-status status-live">Available now</span>
+                    <h3>Sudoku</h3>
+                    <p>The classic number puzzle with a clean, modern interface.</p>
+                    <div class="store-badges">
+                        <a href="https://play.google.com/store/apps/details?id=com.diamantgames.sudoku" target="_blank" rel="noopener" class="play-badge">
+                            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+                        </a>
+                        <a href="https://apps.apple.com/app/sudoku-classic-number-puzzle/id6777778748" target="_blank" rel="noopener" class="play-badge apple">
+                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="game-tile">
                 <img src="killer_sudoku_icon.png" alt="Killer Sudoku" class="game-tile-icon">
-                <h3>Killer Sudoku</h3>
-                <p>Sudoku meets math — solve the cages and crack the grid, one sum at a time.</p>
-                <span class="game-status status-live">Available Now</span>
-                <div class="store-badges">
-                    <a href="https://play.google.com/store/apps/details?id=com.diamantgames.killersudoku" target="_blank" rel="noopener" class="play-badge">
-                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
-                    </a>
-                    <a href="https://apps.apple.com/us/app/killer-sudoku-numbers-game/id6795658452" target="_blank" rel="noopener" class="play-badge apple">
-                        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
-                    </a>
+                <div class="game-body">
+                    <span class="game-status status-live">Available now</span>
+                    <h3>Killer Sudoku</h3>
+                    <p>Sudoku meets math: solve the cages and crack the grid, one sum at a time.</p>
+                    <div class="store-badges">
+                        <a href="https://play.google.com/store/apps/details?id=com.diamantgames.killersudoku" target="_blank" rel="noopener" class="play-badge">
+                            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+                        </a>
+                        <a href="https://apps.apple.com/us/app/killer-sudoku-numbers-game/id6795658452" target="_blank" rel="noopener" class="play-badge apple">
+                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="game-tile">
                 <img src="sudoku_champions_icon.png" alt="Sudoku Classic - Champions" class="game-tile-icon">
-                <h3>Sudoku Classic - Champions</h3>
-                <p>Classic Sudoku with global leaderboards — climb the ranks solo and for your country.</p>
-                <span class="game-status status-live">Available Now</span>
-                <div class="store-badges">
-                    <a href="https://play.google.com/store/apps/details?id=com.diamantgames.sudokuchampions" target="_blank" rel="noopener" class="play-badge">
-                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
-                    </a>
+                <div class="game-body">
+                    <span class="game-status status-live">Available now</span>
+                    <h3>Sudoku Classic - Champions</h3>
+                    <p>Classic Sudoku with global leaderboards. Climb the ranks for yourself and your country.</p>
+                    <div class="store-badges">
+                        <a href="https://play.google.com/store/apps/details?id=com.diamantgames.sudokuchampions" target="_blank" rel="noopener" class="play-badge">
+                            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+                        </a>
+                    </div>
                 </div>
             </div>
+        </div>
 
+        <div class="coming-soon">
+            <h3>Coming soon</h3>
             <div class="game-tile">
-                <img src="wordsearch_icon.png" alt="Word Search - Relaxing Puzzle" class="game-tile-icon">
-                <h3>Word Search</h3>
-                <p>A relaxing word-hunt puzzle to unwind with — find the words, clear the board, repeat.</p>
-                <span class="game-status status-coming">Coming Soon</span>
+                <img src="wordsearch_icon.png" alt="Word Search" class="game-tile-icon on-white">
+                <div class="game-body">
+                    <span class="game-status status-coming">In the works</span>
+                    <h3>Word Search</h3>
+                    <p>A relaxing word-hunt puzzle to unwind with: find the words, clear the board, repeat.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -694,13 +709,11 @@
     <!-- About -->
     <section class="about-section" id="about">
         <div class="about-inner">
-            <div class="about-accent">
-                <img src="diamond_icon.png" alt="Diamant Games">
-            </div>
+            <div class="about-accent"><img src="diamond_icon.png" alt=""></div>
             <div class="about-text">
                 <h2>About the Studio</h2>
-                <p>Diamant Games is a casual mobile game studio based in Berlin, Germany. We focus on crafting mobile games that are simple to pick up, satisfying to play, and beautifully designed.</p>
-                <p>Our growing portfolio spans card games, puzzles, word games, and board games — each built with attention to detail and a love for the classics.</p>
+                <p>Diamant Games is a mobile games and apps studio based in Berlin, Germany. We make puzzle and word games that are simple to pick up, satisfying to play, and beautifully designed, and we keep improving them long after launch.</p>
+                <p>Alongside our own titles, we put the same product thinking to work for other teams through our <a href="consulting.html">consulting practice</a>.</p>
             </div>
         </div>
     </section>
@@ -711,27 +724,27 @@
             <div class="consulting-head">
                 <span class="consulting-eyebrow">Consulting</span>
                 <h2>Product expertise, on demand</h2>
-                <p>Beyond building our own games, we help tech and gaming teams sharpen their products — from building a product function from scratch to squeezing more out of engagement, retention and monetization, with AI woven into the workflow.</p>
+                <p>We help tech and gaming teams sharpen their products, from building a product function from scratch to getting more out of engagement, retention and monetization, with AI built into the workflow.</p>
             </div>
 
             <div class="consulting-grid">
                 <div class="consulting-card">
-                    <span class="c-icon">🎯</span>
+                    <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
                     <h3>Product Management</h3>
-                    <p>Strategy, roadmaps, and discovery-to-delivery — or standing up a product function from zero.</p>
+                    <p>Strategy, roadmaps, and discovery to delivery, or standing up a product function from zero.</p>
                 </div>
                 <div class="consulting-card">
-                    <span class="c-icon">📈</span>
+                    <div class="svc-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
                     <h3>Engagement &amp; Retention</h3>
                     <p>Progression, economy and monetization design that keeps players coming back and paying.</p>
                 </div>
                 <div class="consulting-card">
-                    <span class="c-icon">🔄</span>
+                    <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
                     <h3>LiveOps &amp; Growth</h3>
                     <p>Event cadences, A/B testing and KPI dashboards that turn a launch into a living service.</p>
                 </div>
                 <div class="consulting-card">
-                    <span class="c-icon">🤖</span>
+                    <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div>
                     <h3>AI-Assisted Development</h3>
                     <p>Embedding AI tooling into product and engineering workflows to ship more, faster.</p>
                 </div>
@@ -739,7 +752,7 @@
 
             <div class="consulting-cta">
                 <a href="mailto:contact@diamantgames.com?subject=Consulting%20enquiry" class="btn-primary">Get in touch</a>
-                <a href="consulting.html" class="btn-secondary">Learn more →</a>
+                <a href="consulting.html" class="btn-ghost">Learn more</a>
             </div>
         </div>
     </section>
@@ -749,7 +762,7 @@
         <div class="footer-inner">
             <span class="footer-copy">&copy; 2026 Diamant Games. All rights reserved.</span>
             <ul class="footer-links">
-                <li><a href="#consulting">Consulting</a></li>
+                <li><a href="consulting.html">Consulting</a></li>
                 <li><a href="privacy-policy.html">Privacy Policy</a></li>
                 <li><a href="mailto:contact@diamantgames.com">Contact</a></li>
                 <li>

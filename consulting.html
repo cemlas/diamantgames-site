@@ -9,6 +9,11 @@
     <meta property="og:description" content="Senior product and production expertise for tech and gaming teams.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://diamantgames.com/consulting.html">
+    <meta property="og:image" content="https://diamantgames.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="627">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://diamantgames.com/og-image.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
@@ -58,6 +63,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 16px;
         }
         .logo {
             display: flex;
@@ -76,6 +82,7 @@
             font-weight: 800;
             font-size: 1.3rem;
             letter-spacing: -0.02em;
+            white-space: nowrap;
         }
         .nav-links {
             display: flex;
@@ -93,6 +100,7 @@
             padding: 8px 16px;
             border-radius: 8px;
             transition: all 0.2s;
+            white-space: nowrap;
         }
         .nav-links a:hover { color: var(--text); background: var(--off-white); }
         .nav-links a.active { color: var(--text); background: var(--off-white); }
@@ -202,7 +210,18 @@
             transition: all 0.25s ease;
         }
         .svc-card:hover { transform: translateY(-5px); box-shadow: var(--card-shadow-hover); }
-        .svc-card .s-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+        .svc-card .s-icon {
+            width: 48px; height: 48px;
+            border-radius: 13px;
+            background: #fff6e0;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 18px;
+        }
+        .s-icon svg {
+            width: 24px; height: 24px;
+            fill: none; stroke: #d4930b; stroke-width: 1.8;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
         .svc-card h3 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
@@ -240,8 +259,44 @@
             display: flex; align-items: center; justify-content: center;
             margin-top: 2px;
         }
-        .aud-item p { color: var(--text-mid); font-weight: 600; font-size: 0.95rem; }
+        .aud-item p { color: var(--text-mid); font-weight: 500; font-size: 0.93rem; line-height: 1.55; }
         .aud-item strong { color: var(--text); font-weight: 800; display: block; margin-bottom: 2px; }
+
+        /* ─── How we work ─── */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            counter-reset: step;
+        }
+        .step {
+            position: relative;
+            padding: 28px 26px;
+            border-radius: 18px;
+            border: 1px solid rgba(0,0,0,0.07);
+            background: var(--white);
+        }
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            background: var(--navy);
+            color: var(--gold);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+        .step h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.08rem;
+            margin-bottom: 8px;
+        }
+        .step p { color: var(--text-mid); font-weight: 500; font-size: 0.93rem; line-height: 1.6; }
+        .experience { background: var(--off-white); }
 
         /* ─── Led by ─── */
         .ledby-inner {
@@ -333,13 +388,19 @@
             .section { padding: 60px 24px; }
             .svc-grid { grid-template-columns: 1fr; }
             .aud-list { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; }
             .ledby-inner { flex-direction: column; text-align: center; gap: 28px; }
             .ledby-accent { width: 90px; height: 90px; border-radius: 22px; }
             .ledby-accent img { width: 46px; }
             .footer-inner { flex-direction: column; align-items: flex-start; padding: 32px 24px; }
-            .nav-inner { padding: 14px 20px; }
-            .nav-links a { padding: 6px 10px; font-size: 0.78rem; }
+        }
+        @media (max-width: 600px) {
+            .nav-inner { flex-direction: column; gap: 6px; padding: 12px 16px 8px; }
             .nav-links { gap: 2px; }
+            .nav-links a { padding: 6px 12px; font-size: 0.76rem; }
+            .hero-inner { padding: 44px 20px 0; }
+            .section { padding: 52px 20px; }
+            .footer-links { flex-wrap: wrap; }
         }
     </style>
 </head>
@@ -355,7 +416,6 @@
                 <li><a href="index.html#games">Games</a></li>
                 <li><a href="consulting.html" class="active">Consulting</a></li>
                 <li><a href="index.html#about">About</a></li>
-                <li><a href="privacy-policy.html">Privacy</a></li>
             </ul>
         </div>
     </div>
@@ -384,22 +444,22 @@
         </div>
         <div class="svc-grid">
             <div class="svc-card">
-                <span class="s-icon">🎯</span>
+                <div class="s-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
                 <h3>Product Management &amp; Strategy</h3>
                 <p>Product strategy, roadmaps and discovery-to-delivery. We help you prioritise what matters, set up the processes and rituals that keep teams moving, and — when needed — build a product function from the ground up.</p>
             </div>
             <div class="svc-card">
-                <span class="s-icon">📈</span>
+                <div class="s-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
                 <h3>Engagement, Retention &amp; Monetization</h3>
                 <p>Progression systems, game economies and monetization models grounded in a decade of free-to-play experience. We find the levers that keep users coming back — and paying — without breaking the experience.</p>
             </div>
             <div class="svc-card">
-                <span class="s-icon">🔄</span>
+                <div class="s-icon"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
                 <h3>LiveOps &amp; Growth</h3>
                 <p>Turn a launch into a living service: event cadences, A/B testing frameworks, KPI dashboards and retention loops that compound over time and keep your metrics trending the right way.</p>
             </div>
             <div class="svc-card">
-                <span class="s-icon">🤖</span>
+                <div class="s-icon"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div>
                 <h3>AI-Assisted Product Development</h3>
                 <p>We build our own games with an AI-first workflow. We'll help you embed the same tooling into your product and engineering process so your team ships more, faster, without sacrificing quality.</p>
             </div>
@@ -435,8 +495,35 @@
         </div>
     </section>
 
-    <!-- Led by -->
+    <!-- How we work -->
     <section class="section">
+        <div class="section-head">
+            <span class="section-eyebrow">How we work</span>
+            <h2>From first call to results</h2>
+            <p>A simple, transparent process so you always know what you're getting.</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Intro call</h3>
+                <p>A free 30-minute conversation about your product, your goals and where you're stuck.</p>
+            </div>
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Scoped proposal</h3>
+                <p>A clear plan with deliverables, timeline and cost, sized to what you actually need.</p>
+            </div>
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Hands-on delivery</h3>
+                <p>We work alongside your team, with regular check-ins and outcomes you can measure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience">
+      <div class="section">
         <div class="ledby-inner">
             <div class="ledby-accent"><img src="diamond_icon.png" alt="Diamant Games"></div>
             <div class="ledby-text">
@@ -445,6 +532,7 @@
                 <p>We pair that product depth with an AI-first way of working, so the teams we partner with move faster and ship with confidence. Based in Berlin, working with clients across gaming and tech.</p>
             </div>
         </div>
+      </div>
     </section>
 
     <!-- CTA -->
